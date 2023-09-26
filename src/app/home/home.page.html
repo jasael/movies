@@ -1,20 +1,37 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Movies</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <form [formGroup]="searchForm">
+      <ion-input
+        placeholder="Search"
+        label="Search"
+        formControlName="search"
+        (input)="onChange($event)"
+      ></ion-input>
+    </form>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- si hay peliculas mostrar el ion-list y si no hay muestra un texto centrado -->
+
+  <div *ngIf="this.movies.length; else noMovies">
+    <ion-list>
+      <ion-card *ngFor="let movie of this.movies">
+        <ion-card-header>
+          <ion-card-title> {{ movie.title }} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <img src="{{ movie.poster }}" alt="{{ movie.title }}" />
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
   </div>
+
+  <ng-template #noMovies>
+    <h1 class="ion-text-center">No hay peliculas</h1>
+  </ng-template>
 </ion-content>

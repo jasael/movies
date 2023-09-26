@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ion-item lines="full">
+      <ion-input
+        type="text"
+        aria-label="Full Name"
+        label="Full Name"
+        formControlName="fullName"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-input
+        type="text"
+        aria-label="Username"
+        label="Username"
+        formControlName="username"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-input
+        type="password"
+        aria-label="Password"
+        label="Password"
+        formControlName="password"
+      ></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">
+          Sign Up
+        </ion-button>
+
+        <p class="ion-text-center">
+          Already have an account? <a [routerLink]="['/login']">Sign In</a>
+        </p>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
